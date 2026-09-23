@@ -10,6 +10,7 @@ import StickerField from "@/components/StickerField";
 import TapedCard from "@/components/TapedCard";
 import TiltCard from "@/components/TiltCard";
 import { caseStudies, experience, profile, projects } from "@/data/portfolio";
+import { basePath } from "@/lib/site";
 import Link from "next/link";
 import ShaderMount from "@/components/ShaderMount";
 
@@ -241,7 +242,7 @@ function Footer() {
             </a>
           </MagneticButton>
           <MagneticButton>
-            <a className="block rounded-full bg-accent px-4 py-2 font-bold text-accent-ink hover:brightness-110" href="/resume.pdf" download="Shanmukha_Kiran_Sagar_Resume.pdf">
+            <a className="block rounded-full bg-accent px-4 py-2 font-bold text-accent-ink hover:brightness-110" href={`${basePath}/resume.pdf`} download="Shanmukha_Kiran_Sagar_Resume.pdf">
               resume ↓
             </a>
           </MagneticButton>

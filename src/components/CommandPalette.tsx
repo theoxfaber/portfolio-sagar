@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { profile, projects } from "@/data/portfolio";
+import { basePath } from "@/lib/site";
 import { useUiSound } from "@/hooks/useUiSound";
 
 type Item = {
@@ -38,7 +39,7 @@ export default function CommandPalette() {
         label: `${p.name} — case study`,
         hint: "↵",
         run: () => {
-          window.location.href = `/projects/${p.name.toLowerCase()}`;
+          window.location.href = `${basePath}/projects/${p.name.toLowerCase()}/`;
         },
       })),
       {
@@ -61,7 +62,7 @@ export default function CommandPalette() {
         label: "Download resume (PDF)",
         run: () => {
           const a = document.createElement("a");
-          a.href = "/resume.pdf";
+          a.href = `${basePath}/resume.pdf`;
           a.download = "Shanmukha_Kiran_Sagar_Resume.pdf";
           a.click();
         },

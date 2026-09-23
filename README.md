@@ -4,7 +4,8 @@ Scrapbook-style developer portfolio for **Shanmukha Kiran Sagar** (`theoxfaber`)
 Rust systems programmer: browser automation, GPU compute runtimes, LLM inference,
 workflow engines, Solana/Ethereum tooling.
 
-Live: `https://portfolio-sagar.vercel.app` (set `NEXT_PUBLIC_SITE_URL` to override).
+Live: `https://theoxfaber.github.io/portfolio-sagar/` (GitHub Pages, deployed from
+`main` via `.github/workflows/pages.yml`; set `NEXT_PUBLIC_SITE_URL` to override).
 
 ## Stack
 
