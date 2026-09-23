@@ -5,7 +5,7 @@ function Row() {
     <div className="flex shrink-0 items-end gap-6 pr-6">
       {ticks.map((t) => (
         <div key={t} className="flex flex-col items-center">
-          <span className="font-stamp text-[10px] text-zinc-500">{t}°</span>
+          <span className="font-stamp text-[10px] text-fg-faint">{t}°</span>
           <span
             className="block w-px bg-zinc-700"
             style={{ height: t % 45 === 0 ? 18 : 10 }}

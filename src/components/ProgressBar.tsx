@@ -9,7 +9,7 @@ export default function ProgressBar() {
   return (
     <motion.div
       style={{ scaleX }}
-      className="fixed inset-x-0 top-0 z-50 h-[3px] origin-left bg-lime-300"
+      className="fixed inset-x-0 top-0 z-50 h-[3px] origin-left bg-accent"
     />
   );
 }

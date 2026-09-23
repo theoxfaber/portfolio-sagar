@@ -31,7 +31,7 @@ export default function Typewriter({ text, speed = 34, className = "" }: Props) 
       <span aria-hidden>{shown}</span>
       <span
         aria-hidden
-        className={`ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] bg-lime-300 ${done ? "animate-pulse" : ""}`}
+        className={`ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] bg-accent ${done ? "animate-pulse" : ""}`}
       />
     </span>
   );

@@ -1,17 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0b0d;
-  --foreground: #f2f0e9;
-  --paper: #141417;
-  --ink-dim: #a1a1aa;
+  --bg: #0b0b0d;
+  --bg-paper: #141417;
+  --fg: #f2f0e9;
+  --fg-dim: #b7b7c0;
+  --fg-faint: #85858f;
   --accent: #d6fd5c;
+  --accent-ink: #0f1400;
   --tape: rgba(214, 253, 92, 0.28);
+  --tape-pink: rgba(255, 138, 200, 0.3);
+  --tape-blue: rgba(125, 211, 252, 0.3);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-paper: var(--bg-paper);
+  --color-fg-dim: var(--fg-dim);
+  --color-fg-faint: var(--fg-faint);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-marker: var(--font-caveat);
 }
 
 html {
@@ -19,20 +31,67 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   background-image: radial-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 
-.font-marker {
-  font-family: "Caveat", "Segoe Print", ui-rounded, cursive;
+/* custom cursor takes over the pointer (fine pointers only, toggled from Cursor.tsx) */
+body.custom-cursor,
+body.custom-cursor a,
+body.custom-cursor button,
+body.custom-cursor [role="button"] {
+  cursor: none;
 }
 
 .font-stamp {
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-family: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   letter-spacing: 0.08em;
+}
+
+/* fluid type scale */
+.type-display {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.type-section {
+  font-size: clamp(1.75rem, 2vw + 1rem, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* visible focus for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* skip link: hidden until focused */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: top 0.18s ease;
+}
+
+.skip-link:focus-visible {
+  top: 12px;
+  outline-color: var(--accent-ink);
 }
 
 /* washi tape strip */
@@ -51,19 +110,11 @@ body {
 }
 
 .tape-pink {
-  --tape: rgba(255, 138, 200, 0.3);
+  background: var(--tape-pink);
 }
 
 .tape-blue {
-  --tape: rgba(125, 211, 252, 0.3);
-}
-
-.card-tilt-left {
-  transform: rotate(-1.2deg);
-}
-
-.card-tilt-right {
-  transform: rotate(1.1deg);
+  background: var(--tape-blue);
 }
 
 /* die-cut sticker outline that follows the image alpha */
@@ -91,11 +142,6 @@ body {
   white-space: nowrap;
 }
 
-::selection {
-  background: var(--accent);
-  color: #111;
-}
-
 /* anchored sections clear the sticky nav */
 section[id],
 header[id],
@@ -112,4 +158,18 @@ footer[id] {
   opacity: 0.06;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .ruler-track {
+    animation: none;
+  }
 }

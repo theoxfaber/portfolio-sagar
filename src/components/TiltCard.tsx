@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { useRef, type MouseEvent, type ReactNode } from "react";
 
 type Props = {
@@ -10,6 +16,16 @@ type Props = {
 
 /** Mouse-tracking 3D tilt wrapper — the floating-pinboard feel. */
 export default function TiltCard({ children, className = "" }: Props) {
+  const reduce = useReducedMotion();
+
+  if (reduce) {
+    return <div className={className}>{children}</div>;
+  }
+
+  return <TiltInner className={className}>{children}</TiltInner>;
+}
+
+function TiltInner({ children, className }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
