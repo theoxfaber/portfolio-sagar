@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chatlode Privacy Policy</title>
+  <meta name="description" content="Chatlode stores your exported AI chats only in your own browser. No servers, no analytics, no data collection." />
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; color: #14171f; line-height: 1.6; background: #fff; }
+    h1 { font-size: 30px; letter-spacing: -0.02em; margin-bottom: 4px; }
+    h2 { font-size: 18px; margin-top: 32px; }
+    .muted { color: #5d6676; }
+    .tldr { background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 10px; padding: 14px 16px; }
+    code { background: #f1f5f9; padding: 1px 5px; border-radius: 4px; font-size: 0.92em; }
+    table { border-collapse: collapse; width: 100%; font-size: 14px; }
+    th, td { border: 1px solid #e3e6ec; padding: 8px; text-align: left; vertical-align: top; }
+    a { color: #0d9488; }
+  </style>
+</head>
+<body>
+  <h1>Chatlode Privacy Policy</h1>
+  <p class="muted">Effective 30 October 2026 · Applies to the Chatlode browser extension for Chrome, Microsoft Edge and Firefox.</p>
+
+  <div class="tldr">
+    <strong>Short version:</strong> Chatlode does not collect, transmit, sell or share your data. It has no servers, no accounts, no analytics and no tracking. The chats you export or save stay in your own browser on your own device, and you can delete them at any time.
+  </div>
+
+  <h2>What Chatlode does</h2>
+  <p>Chatlode reads the conversation that is open in your browser tab on <code>perplexity.ai</code> or <code>chat.deepseek.com</code> when you ask it to, and turns it into a file (Markdown, PDF, TXT or JSON) or saves it to a local library you can search, tag and organise.</p>
+
+  <h2>Data the extension handles, and where it goes</h2>
+  <table>
+    <tr><th>Data</th><th>Why</th><th>Where it is kept</th></tr>
+    <tr><td>Text of the AI conversation you choose to export or save (your prompts, the answers, cited source links, the page URL and title)</td><td>To create the export file or the library entry you asked for</td><td>Only in your browser: the file you download, and the extension's local storage (IndexedDB / <code>storage.local</code>). Never sent to us or any third party.</td></tr>
+    <tr><td>Tags, folder names, settings</td><td>To organise your library</td><td>Only in your browser's extension storage</td></tr>
+    <tr><td>Your DeepSeek session (already in your browser)</td><td>On DeepSeek, Chatlode asks DeepSeek's own website for the full message history of the chat you have open, using the login you already have, so long chats export completely</td><td>The request goes only from your browser to <code>chat.deepseek.com</code>, the same site you are using. Chatlode does not store, copy or transmit your token anywhere else.</td></tr>
+  </table>
+
+  <h2>What Chatlode does not do</h2>
+  <ul>
+    <li>No analytics, telemetry, crash reporting, advertising or tracking of any kind.</li>
+    <li>No reading of pages other than the supported chat sites, and nothing is read until you click an action.</li>
+    <li>No selling, renting or sharing of data. We never receive your data in the first place.</li>
+    <li>No remote code. All code ships inside the extension package.</li>
+  </ul>
+
+  <h2>Permissions, explained</h2>
+  <ul>
+    <li><strong>Access to perplexity.ai and chat.deepseek.com:</strong> to read the open conversation when you ask for an export.</li>
+    <li><strong>storage:</strong> to keep your library, tags and settings on your device.</li>
+    <li><strong>downloads:</strong> to save the export file to your Downloads folder.</li>
+    <li><strong>activeTab:</strong> to know which tab you clicked the toolbar button on.</li>
+    <li><strong>sidePanel</strong> (Chrome and Edge) / sidebar (Firefox): to show your library next to the page.</li>
+  </ul>
+
+  <h2>Paid "Pro" licences (future)</h2>
+  <p>Pro is not on sale yet and this version makes no licensing network requests. If Pro launches, activating a licence will send only the licence key you type and a random device label to the payment provider named on the purchase page (for example Lemon Squeezy or Dodo Payments) to confirm the key is valid. Your chats are never sent. This policy will be updated, with a new effective date, before that happens.</p>
+
+  <h2>Deleting your data</h2>
+  <p>Delete any chat from the library with one click, or remove all Chatlode data by uninstalling the extension, which deletes its local storage. Files you downloaded are ordinary files on your computer that you control.</p>
+
+  <h2>Children</h2>
+  <p>Chatlode is a general productivity tool and does not knowingly collect data from anyone, including children.</p>
+
+  <h2>Changes and contact</h2>
+  <p>Material changes will be posted on this page with a new effective date. Questions: <a href="mailto:shanmukhkiransagar@gmail.com">shanmukhkiransagar@gmail.com</a>.</p>
+  <p class="muted">Chatlode is an independent product and is not affiliated with, endorsed by or sponsored by Perplexity AI, DeepSeek, Google, Microsoft or Mozilla. Product names are used only to describe compatibility.</p>
+</body>
+</html>
