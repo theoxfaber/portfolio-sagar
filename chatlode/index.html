@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chatlode – Export Perplexity &amp; DeepSeek chats to Markdown &amp; PDF</title>
+  <meta name="description" content="Free browser extension to export Perplexity and DeepSeek chats to Markdown, PDF, TXT or JSON, with sources and reasoning kept. Private, local library. No account." />
+  <meta property="og:title" content="Chatlode – Export Perplexity & DeepSeek chats" />
+  <meta property="og:description" content="One-click Markdown export with sources, code and math. A private, searchable library in your browser." />
+  <meta property="og:image" content="img/01-export-one-click.jpg" />
+  <link rel="icon" href="img/icon.png" />
+  <style>
+    :root { --bg:#070b14; --panel:#0f1624; --line:#1f2a3c; --text:#e8eaf0; --muted:#9aa3b5; --accent:#5eead4; --ink:#062a26; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height:1.55; }
+    a { color: var(--accent); }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
+    nav { display:flex; justify-content:space-between; align-items:center; padding:20px 0; }
+    .brand { display:flex; gap:10px; align-items:center; font-weight:800; font-size:18px; color:var(--text); text-decoration:none; }
+    .brand img { width:30px; height:30px; border-radius:8px; }
+    nav .links a { color: var(--muted); text-decoration:none; margin-left:20px; font-size:14px; }
+    .hero { padding: 56px 0 30px; text-align:center; background: radial-gradient(900px 400px at 50% 0%, rgba(20,184,166,.18), transparent 70%); }
+    h1 { font-size: clamp(36px, 6vw, 62px); line-height:1.05; letter-spacing:-.035em; margin: 0 auto 18px; max-width: 860px; }
+    h1 em { font-style:normal; color: var(--accent); }
+    .lead { font-size: 20px; color: var(--muted); max-width: 680px; margin: 0 auto 30px; }
+    .cta { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:13px 20px; border-radius:10px; font-weight:700; text-decoration:none; border:1px solid var(--line); color:var(--text); background:var(--panel); }
+    .btn.primary { background: var(--accent); color: var(--ink); border-color: var(--accent); }
+    .btn small { font-weight:500; opacity:.75; }
+    .note { color: var(--muted); font-size: 13px; margin-top: 14px; }
+    .shot { margin: 40px auto 0; max-width: 1000px; border-radius: 16px; overflow:hidden; box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.06); }
+    .shot img { display:block; width:100%; height:auto; }
+    section { padding: 70px 0; border-top: 1px solid var(--line); }
+    h2 { font-size: 34px; letter-spacing: -.02em; margin: 0 0 10px; }
+    .sub { color: var(--muted); font-size: 18px; margin: 0 0 34px; max-width: 700px; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .card { background: var(--panel); border:1px solid var(--line); border-radius: 14px; padding: 20px; }
+    .card h3 { margin: 0 0 6px; font-size: 17px; }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; }
+    .split { display:grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items:center; }
+    .split img { width:100%; height:auto; border-radius: 14px; box-shadow: 0 0 0 1px rgba(255,255,255,.06); }
+    @media (max-width: 820px) { .split { grid-template-columns: 1fr; } }
+    table { width:100%; border-collapse: collapse; font-size: 15px; }
+    th, td { text-align:left; padding: 12px 10px; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); font-weight: 600; }
+    td.y { color: var(--accent); font-weight: 700; }
+    .faq details { background: var(--panel); border:1px solid var(--line); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; }
+    .faq summary { cursor:pointer; font-weight: 600; }
+    .faq p { color: var(--muted); margin: 10px 0 0; }
+    @media (max-width: 600px) { nav .links a:not(:last-child) { display:none; } }
+    footer { padding: 40px 0 60px; color: var(--muted); font-size: 13px; border-top:1px solid var(--line); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#"><img src="img/icon.png" alt="" />Chatlode</a>
+      <div class="links"><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="privacy.html">Privacy</a></div>
+    </nav>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <h1>Export <em>Perplexity</em> &amp; <em>DeepSeek</em> chats in one click</h1>
+      <p class="lead">Clean Markdown with your prompts, answers, code, math and cited sources, plus a private, searchable library that never leaves your browser.</p>
+      <div class="cta">
+        <!-- TODO: replace # with the live store URLs after approval -->
+        <a class="btn primary" href="#" id="edge">Add to Microsoft Edge <small>free</small></a>
+        <a class="btn" href="#" id="firefox">Add to Firefox <small>free</small></a>
+        <a class="btn" href="#" id="chrome">Chrome <small>coming soon</small></a>
+      </div>
+      <p class="note">No account. No server. No tracking.</p>
+      <div class="shot"><img src="img/01-export-one-click.jpg" alt="Chatlode popup exporting a Perplexity thread to Markdown" width="1280" height="800" /></div>
+    </div>
+  </header>
+
+  <section id="features">
+    <div class="wrap">
+      <h2>Built for Perplexity and DeepSeek, not bolted on</h2>
+      <p class="sub">Most exporters are made for ChatGPT first. Chatlode keeps what matters on these two: Perplexity's citations and DeepSeek's reasoning.</p>
+      <div class="grid">
+        <div class="card"><h3>One-click Markdown</h3><p>YAML front matter, real code fences, tables, LaTeX math. Drops straight into Obsidian, Notion or Logseq.</p></div>
+        <div class="card"><h3>Sources kept</h3><p>Perplexity answers come with their cited links, numbered under each answer.</p></div>
+        <div class="card"><h3>Reasoning kept</h3><p>DeepSeek's DeepThink reasoning goes in a collapsible block, separate from the answer.</p></div>
+        <div class="card"><h3>Complete long chats</h3><p>DeepSeek history is read from DeepSeek's own site with your existing login, so nothing gets cut off.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <h2>Your AI research, saved and searchable</h2>
+        <p class="sub">Save chats to a library in the side panel. Search inside every answer, tag, filter by platform, and re-export any time. It's all stored in your browser.</p>
+      </div>
+      <img src="img/02-local-library.jpg" alt="Chatlode library side panel with search and tags" width="1280" height="800" />
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <img src="img/03-clean-markdown.jpg" alt="Example Markdown export with front matter, reasoning and code" width="1280" height="800" />
+      <div>
+        <h2>Markdown that just works</h2>
+        <p class="sub">Front matter for your notes app, the right language on every code block, and numbered sources. Or export PDF, TXT and JSON with Pro.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <h2>Free core. Pro when you need more.</h2>
+      <p class="sub">Pro is coming soon. Want it? <a href="mailto:shanmukhkiransagar@gmail.com?subject=Chatlode%20Pro%20waitlist">Join the waitlist</a> and get the launch price.</p>
+      <table>
+        <tr><th></th><th>Free</th><th>Pro</th></tr>
+        <tr><td>Export current chat to Markdown</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Copy as Markdown</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>Local library, search &amp; tags</td><td class="y">✓</td><td class="y">✓</td></tr>
+        <tr><td>PDF, TXT &amp; JSON export</td><td>–</td><td class="y">✓</td></tr>
+        <tr><td>Bulk export to ZIP</td><td>–</td><td class="y">✓</td></tr>
+        <tr><td>Folders</td><td>–</td><td class="y">✓</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <div class="wrap">
+      <h2>FAQ</h2>
+      <details><summary>Does Chatlode upload my chats?</summary><p>No. There is no Chatlode server. Exports are files on your computer and the library lives in your browser's own storage. Read the <a href="privacy.html">privacy policy</a>.</p></details>
+      <details><summary>Which browsers are supported?</summary><p>Microsoft Edge and Firefox now; Chrome is coming soon.</p></details>
+      <details><summary>Will you support ChatGPT, Claude or Gemini?</summary><p>Those already have many exporters. Next on our list are Microsoft Copilot, Meta AI and Mistral Le Chat.</p></details>
+      <details><summary>It says "no messages found".</summary><p>Reload the chat tab once after installing, wait for the answer to finish, then try again. If a site changed its layout, email us and we'll ship a fix.</p></details>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">© 2026 Chatlode · <a href="privacy.html">Privacy</a> · <a href="mailto:shanmukhkiransagar@gmail.com">Contact</a><br />Chatlode is independent and not affiliated with Perplexity AI or DeepSeek.</div>
+  </footer>
+</body>
+</html>
